@@ -1,11 +1,13 @@
 SELECT * FROM TEST;
 
-CREATE TABLE Member(
-	id VARCHAR2(30) PRIMARY KEY,
-	name VARCHAR2(30) NOT NULL,
-	password VARCHAR2(30) NOT NULL,
-	addr VARCHAR2(100),
-	birth NUMBER
+-- mysql 에서는 varchar2라는게 없다 오직 varchar!
+-- mysql 에서는 number가 아니다! decimal로 숫자지정!
+CREATE TABLE Member( 
+	id VARCHAR(30) PRIMARY KEY,
+	name VARCHAR(30) NOT NULL,
+	password VARCHAR(30) NOT NULL,
+	addr VARCHAR(100),
+	birth DECIMAL
 );
 
 INSERT INTO Member(id,name,password,addr,birth)
