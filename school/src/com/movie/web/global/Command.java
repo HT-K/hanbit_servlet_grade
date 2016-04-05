@@ -13,6 +13,8 @@ public class Command {
 		return directory;
 	}
 
+	
+	
 	public void setDirectory(String directory) {
 		this.directory = directory;
 	}
