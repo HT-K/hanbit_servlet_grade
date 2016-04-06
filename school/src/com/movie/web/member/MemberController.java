@@ -22,12 +22,12 @@ import com.movie.web.global.DispatcherServlet;
 	"/member/update_form.do", "/member/update.do", "/member/delete.do", "/member/member_list.do"}) // xml과 연결됨, 이렇게 배열 형식으로 서블릿을 지정한다.
 public class MemberController extends HttpServlet { // HttpServlet 클래스를 상속받아 만들어진 클래스.
 	private static final long serialVersionUID = 1L;
+	MemberService service = MemberServiceImpl.getInstance(); // 싱글톤 패턴으로 MemberServiceImpl 객체를 가져온다.
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Command command = CommandFactory.getCommand(request, response); // 받아온 URL을 쪼개는 메소드 호출, 팩토리 패턴 사용
-		MemberService service = MemberServiceImpl.getInstance(); // 싱글톤 패턴으로 MemberServiceImpl 객체를 가져온다.
 		MemberBean member = new MemberBean(); // 멤버 빈은 사용자마다 달라야 하므로 doGet 혹은 doPost가 호출될 때 마다 생성되어야 하므로 싱글톤 패턴으로 하면 안된다.
 		HttpSession session = request.getSession(); // 쉘 로우 카피 방식으로 request 객체를 이용해서 세션 객체를 생성한다.
 		List<MemberBean> memList = new ArrayList<MemberBean>(); // 관리자 페이지의 전체 회원 리스트를 출력하기 위한 그릇 객체

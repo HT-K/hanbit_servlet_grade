@@ -6,23 +6,39 @@ AS
 SELECT 
 	g.score_seq AS score_seq,
  	g.id AS id,
-    g.java AS java,
-    g.sql AS sql,
-    g.jsp AS jsp,
-    g.spring AS spring,
 	m.name AS name,
-	m.password AS password,
-	m.addr AS addr,
-	m.birth AS birth
-FROM Member m, Grade g
-WHERE m.id = g.id;
+	s.subj_name AS subject,
+	g.score AS score
+FROM Member m, Grade g, Subject s
+WHERE m.id = g.id AND g.subj_seq = s.subj_seq;
 -----------------------------------------------------
 SELECT * FROM v_Member_Grade;
 -----------------------------------------------------
 SELECT * FROM v_Member_Grade
-WHERE name = '김유신';
+WHERE id = 'hong';
 -----------------------------------------------------
-DROP VIEW v_Member_Grade CASCADE CONSTRAINT; <!-- 뷰 제거 명령어 -->
+DROP VIEW v_Member_Grade CASCADE; <!-- 뷰 제거 명령어 -->
 -----------------------------------------------------
 SELECT COUNT(*) AS count -- 열의 수 구하는 방법, 결과 값을 count 컬럼에다 바로 넣는다.(int 값으로 들어간다) 
 FROM v_Member_Grade;
+
+
+-----------------------------------------------------
+-- ANSI JOIN(Natural JOIN)
+SELECT 
+	g.score_seq AS score_seq,
+ 	g.id AS id,
+	m.name AS name,
+	s.subj_name AS subject,
+	g.score AS score
+FROM Member m NATURAL JOIN Grade g NATURAL JOIN Subject s
+
+-- ANSI JOIN(USING)
+SELECT 
+	g.score_seq AS score_seq,
+ 	g.id AS id,
+	m.name AS name,
+	s.subj_name AS subject,
+	g.score AS score
+FROM Member m JOIN Grade g USING(id)
+JOIN Subject s USING(subj_seq)
