@@ -32,7 +32,7 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public AdminBean selectAdmin(AdminBean admin) {
 		AdminBean temp = new AdminBean();
-		String query = "SELECT * FROM Admin WHERE id =? and password=?";
+		String query = "SELECT * FROM Member WHERE id =? and password=?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, admin.getId());

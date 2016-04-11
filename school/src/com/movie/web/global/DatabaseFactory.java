@@ -6,8 +6,10 @@ public class DatabaseFactory { // new , 객체를 생성하는 new 키워드를 
 		
 		switch (vendor) {
 		case ORACLE:
-				driver = Constants.ORACLE_DRIVER;
-				url = Constants.ORACLE_URL;
+				/*driver = Constants.ORACLE_DRIVER;
+				url = Constants.ORACLE_URL;*/
+				driver = Constants.MYSQL_DRIVER;
+				url = Constants.MYSQL_URL;
 			break;
 		case MYSQL:	
 			break;
